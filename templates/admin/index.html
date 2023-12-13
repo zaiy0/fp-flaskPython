@@ -1,0 +1,135 @@
+{% extends 'admin/base.html' %}
+{% block title %}
+</title>Library</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="content-area">
+    <div class="flexContainer" id="dashboardLineContainer">
+        <div class="flex-40 dashboardLine">
+            <i class="fa fa-home fa-2x" style="float: left;" id="homeIcon"></i>
+            <div style="margin-bottom: 0;margin-top: 0;">
+                <h3 style="margin-bottom: 0;margin-top: 2px;"><small>Dashboard</small> </h3>
+                <p style="margin-bottom: 0;margin-top: 0;"><small>Lorem, ipsum dolor sit.</small> </p>
+            </div>
+
+        </div>
+        <div class="flex-40-end">
+            <ul class="breadcrumb" style="float: right;">
+                <li><a href="#"><i class="fa fa-home"></i></a></li>
+                <li><small>Dashboard</small></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="flexContainer">
+        <div class="flex-50 chartCard card" style="flex: 0 0 30%;">
+            <h4><strong>Most Popular Books</strong></h4>
+            <div style="width: 80%;margin: auto;">
+                <table class="attendance_form_table">
+                    <tbody id="attendance_form_table_data">
+                        {%for book in most_popular %}
+                        {% if book[4] == True %}
+                        <tr>
+                            <td>{{book[1]}}</td>
+                            <td>{{book[4]}}</td>
+                        </tr>
+                        {% endif %}
+                        {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="flex-50 chartCard card" style="flex: 0 0 30%;">
+            <h4><strong>Highest Paying Customers</strong></h4>
+            <div style="width: 80%;margin: auto;">
+                <table class="attendance_form_table">
+                    <tbody id="attendance_form_table_data">
+                        {%for customer in highest_paying %}
+                        {% if customer[3] > 0 %}
+                        <tr>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer[3]}}</td>
+                        </tr>
+                        {% endif %}
+                        {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="flex-40 verticalFlex" style="flex: 0 0 30%;">
+            <div class="card verticalFlexItem" style="margin-bottom: 1.5%;">
+                <h6>Total Customers</h6>
+                <h3 style="color: #4098FE;">{{total_customer}}</h3>
+            </div>
+            <div class="card verticalFlexItem" style="margin-bottom: 1%; margin-top:1%;">
+                <h6>Total Book Titles</h6>
+                <h3 style="color: #FF5370;">{{total_titles}}</h3>
+            </div>
+            <div class="card verticalFlexItem" style="margin-bottom: 1%; margin-top:1%;">
+                <h6>Total Books in Stock</h6>
+                <h3 style="color: #FFB64D;">{{total_books}}</h3>
+            </div>
+            
+
+        </div>
+    </div>
+    <div class="flexContainer">
+        <div class="flex-50 chartCard card" style="flex: 0 0 30%;">
+            <h4><strong>Customers With Highest Debt</strong></h4>
+            <div style="width: 80%;margin: auto;">
+                <table class="attendance_form_table">
+                    <tbody id="attendance_form_table_data">
+                        {%for customer in highest_debt %}
+                        {% if customer[2] > 0 %}
+                        <tr>
+                            <td>{{customer[1]}}</td>
+                            <td>{{customer[2]}}</td>
+                        </tr>
+                        {% endif %}
+                        {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="flex-50 chartCard card" style="flex: 0 0 30%;">
+            <h4><strong>Books with Minimum Stock Left</strong></h4>
+            <div style="width: 80%;margin: auto;">
+                <table class="attendance_form_table">
+                    <tbody id="attendance_form_table_data">
+                        {%for book in least_stock %}
+                        {% if book[3] > 0 %}
+                        <tr>
+                            <td>{{book[1]}}</td>
+                            <td>{{book[3]}}</td>
+                        </tr>
+                        {% endif %}
+                        {%endfor%}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="flex-40 verticalFlex" style="flex: 0 0 30%;">
+            <div class="card verticalFlexItem" style="margin-bottom: 1.5%;">
+                <h6>Total Times Issued</h6>
+                <h3 style="color: #FF5370;">{{total_issues}}</h3>
+            </div>
+            <div class="card verticalFlexItem" style="margin-bottom: 1%; margin-top:1%;">
+                <h6>Total Transactions Amount</h6>
+                <h3 style="color: #4098FE;">{{total_amount}}</h3>
+            </div>
+            <div class="card verticalFlexItem" style="margin-bottom: 1%; margin-top:1%;">
+                <h6>Total Debt Due</h6>
+                <h3 style="color: #FFB64D;">{{total_debt}}</h3>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}
